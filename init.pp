@@ -21,7 +21,7 @@ user { $::user:
 
 $prezto = "$home/.zprezto"
 vcsrepo { $prezto:
-  ensure   => present,
+  ensure   => latest,
   provider => git,
   source   => "$git/prezto.git",
   user     => $::user,
@@ -37,7 +37,7 @@ file { "$home/.zshrc":     ensure => link, owner => $::user, target => "$runcoms
 
 $vim = "$home/.vim"
 vcsrepo { $vim:
-  ensure   => present,
+  ensure   => latest,
   provider => git,
   source   => "$git/vim.git",
   user     => $::user,
