@@ -10,6 +10,10 @@ package { [ 'pygit2', 'git+git://github.com/Lokaltog/powerline' ]:
   provider => pip,
 }
 
+user { $::user:
+  shell => '/usr/bin/zsh',
+}
+
 $prezto = "$home/.zprezto"
 vcsrepo { $prezto:
   ensure   => present,
