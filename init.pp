@@ -1,5 +1,10 @@
 $home = "/home/$::user"
-$git = "git@github.com:chriswhelan"
+
+$git_protocol = $::user ? {
+  'chris' => 'git@',
+  default => 'https://',
+}
+$git = "${git_protocol}github.com:chriswhelan"
 
 package { [ 'zsh', 'git', 'vagrant', 'synaptic', 'python-pip' ]:
    ensure => latest,
