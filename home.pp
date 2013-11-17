@@ -1,10 +1,10 @@
 $home = "/home/$id"
 
 $git_protocol = $id ? {
-  'chris' => 'git@',
-  default => 'https://',
+  'chris' => 'git@github.com:',
+  default => 'https://github.com/',
 }
-$git = "${git_protocol}github.com:chriswhelan"
+$git = "${git_protocol}chriswhelan"
 
 user { $id:
   shell => '/usr/bin/zsh',
