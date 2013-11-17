@@ -24,6 +24,7 @@ vcsrepo { $prezto:
   ensure   => latest,
   provider => git,
   source   => "$git/prezto.git",
+  revision => 'master',
   user     => $id,
 }
 
@@ -40,6 +41,7 @@ vcsrepo { $vim:
   ensure   => latest,
   provider => git,
   source   => "$git/vim.git",
+  revision => 'master',
   user     => $id,
 }
 
