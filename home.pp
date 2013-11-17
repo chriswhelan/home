@@ -16,7 +16,6 @@ vcsrepo { $prezto:
   provider => git,
   source   => "$git/prezto.git",
   revision => 'master',
-  user     => $id,
 }
 
 $runcoms = "$prezto/runcoms"
@@ -33,7 +32,6 @@ vcsrepo { $vim:
   provider => git,
   source   => "$git/vim.git",
   revision => 'master',
-  user     => $id,
 }
 
 file { "$home/.vimrc": ensure => link, owner => $id, target => "$vim/vimrc" }
