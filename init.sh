@@ -4,4 +4,4 @@ cd ~/.home
 librarian-puppet install
 sudo puppet apply --modulepath=modules init.pp
 puppet apply --modulepath=modules home.pp
-chsh -s /usr/bin/zsh
+sudo usermod `whoami` -s /usr/bin/zsh
