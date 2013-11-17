@@ -6,12 +6,12 @@ $git_protocol = $id ? {
 }
 $git = "${git_protocol}chriswhelan"
 
+Vcsrepo { provider => 'git', revision => 'master' }
+
 $prezto = "$home/.zprezto"
 vcsrepo { $prezto:
   ensure   => latest,
-  provider => git,
   source   => "$git/prezto.git",
-  revision => 'master',
 }
 
 $runcoms = "$prezto/runcoms"
@@ -25,9 +25,12 @@ file { "$home/.zshrc":     ensure => link, owner => $id, target => "$runcoms/zsh
 $vim = "$home/.vim"
 vcsrepo { $vim:
   ensure   => latest,
-  provider => git,
   source   => "$git/vim.git",
-  revision => 'master',
 }
 
 file { "$home/.vimrc": ensure => link, owner => $id, target => "$vim/vimrc" }
+
+vcsrepo { "$home/.config":
+  ensure => latest,
+  source => "$git/config.git"
+}
