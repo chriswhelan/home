@@ -1,6 +1,6 @@
-$home = "/home/$::user"
+$home = "/home/$id"
 
-$git_protocol = $::user ? {
+$git_protocol = $id ? {
   'chris' => 'git@',
   default => 'https://',
 }
@@ -15,7 +15,7 @@ package { [ 'pygit2', 'git+git://github.com/Lokaltog/powerline' ]:
   provider => pip,
 }
 
-user { $::user:
+user { $id:
   shell => '/usr/bin/zsh',
 }
 
@@ -24,23 +24,23 @@ vcsrepo { $prezto:
   ensure   => latest,
   provider => git,
   source   => "$git/prezto.git",
-  user     => $::user,
+  user     => $id,
 }
 
 $runcoms = "$prezto/runcoms"
-file { "$home/.zlogin":    ensure => link, owner => $::user, target => "$runcoms/zlogin"}
-file { "$home/.zlogout":   ensure => link, owner => $::user, target => "$runcoms/zlogout" }
-file { "$home/.zpreztorc": ensure => link, owner => $::user, target => "$runcoms/zpreztorc" }
-file { "$home/.zprofile":  ensure => link, owner => $::user, target => "$runcoms/zprofile" }
-file { "$home/.zshenv":    ensure => link, owner => $::user, target => "$runcoms/zshenv" }
-file { "$home/.zshrc":     ensure => link, owner => $::user, target => "$runcoms/zshrc" }
+file { "$home/.zlogin":    ensure => link, owner => $id, target => "$runcoms/zlogin"}
+file { "$home/.zlogout":   ensure => link, owner => $id, target => "$runcoms/zlogout" }
+file { "$home/.zpreztorc": ensure => link, owner => $id, target => "$runcoms/zpreztorc" }
+file { "$home/.zprofile":  ensure => link, owner => $id, target => "$runcoms/zprofile" }
+file { "$home/.zshenv":    ensure => link, owner => $id, target => "$runcoms/zshenv" }
+file { "$home/.zshrc":     ensure => link, owner => $id, target => "$runcoms/zshrc" }
 
 $vim = "$home/.vim"
 vcsrepo { $vim:
   ensure   => latest,
   provider => git,
   source   => "$git/vim.git",
-  user     => $::user,
+  user     => $id,
 }
 
-file { "$home/.vimrc": ensure => link, owner => $::user, target => "$vim/vimrc" }
+file { "$home/.vimrc": ensure => link, owner => $id, target => "$vim/vimrc" }
