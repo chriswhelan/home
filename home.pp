@@ -6,10 +6,6 @@ $git_protocol = $id ? {
 }
 $git = "${git_protocol}chriswhelan"
 
-user { $id:
-  shell => '/usr/bin/zsh',
-}
-
 $prezto = "$home/.zprezto"
 vcsrepo { $prezto:
   ensure   => latest,
